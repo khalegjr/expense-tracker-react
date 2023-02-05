@@ -16,14 +16,34 @@ export const InputArea = ({ onAdd }: Props) => {
   let categoryKeys: string[] = Object.keys(categories);
 
   const handleAddEvent = () => {
-    let newItem: Item = {
-      date: new Date(2023, 3, 5),
-      category: "food",
-      title: "Uma comida de teste...hehehe",
-      value: 178.35,
-    };
+    let errors: string[] = [];
 
-    onAdd(newItem);
+    if (isNaN(new Date(dateField).getTime())) {
+      errors.push("Data inválida!");
+    }
+
+    if (!categoryKeys.includes(categoryField)) {
+      errors.push("Categoria inválida!");
+    }
+
+    if (titleField === "") {
+      errors.push("Titulo vazio!");
+    }
+
+    if (valueField <= 0) {
+      errors.push("Valor inválido!");
+    }
+
+    if (errors.length > 0) {
+      alert(errors.join("\n"));
+    } else {
+      onAdd({
+        date: new Date(2023, 3, 5),
+        category: "food",
+        title: "Uma comida de teste...hehehe",
+        value: 178.35,
+      });
+    }
   };
 
   return (
