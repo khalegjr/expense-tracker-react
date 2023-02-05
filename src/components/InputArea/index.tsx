@@ -2,7 +2,14 @@ import { useState } from "react";
 import { categories } from "../../data/categories";
 import { newDateAdjusted } from "../../helpers/dateFilters";
 import { Item } from "../../types/Item";
-import { Container, Input, InputLabel, InputTitle, Select } from "./styles";
+import {
+  Button,
+  Container,
+  Input,
+  InputLabel,
+  InputTitle,
+  Select,
+} from "./styles";
 
 type Props = {
   onAdd: (item: Item) => void;
@@ -104,7 +111,10 @@ export const InputArea = ({ onAdd }: Props) => {
           onChange={(e) => setValueField(parseFloat(e.target.value))}
         />
       </InputLabel>
-      <button onClick={handleAddEvent}>Adicionar</button>
+
+      <InputLabel>
+        <Button onClick={handleAddEvent}>Adicionar</Button>
+      </InputLabel>
     </Container>
   );
 };
