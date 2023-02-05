@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { categories } from "../../data/categories";
+import { newDateAdjusted } from "../../helpers/dateFilters";
 import { Item } from "../../types/Item";
 import { Container, Input, InputLabel, InputTitle, Select } from "./styles";
 
@@ -38,12 +39,20 @@ export const InputArea = ({ onAdd }: Props) => {
       alert(errors.join("\n"));
     } else {
       onAdd({
-        date: new Date(2023, 3, 5),
-        category: "food",
-        title: "Uma comida de teste...hehehe",
-        value: 178.35,
+        date: newDateAdjusted(dateField),
+        category: categoryField,
+        title: titleField,
+        value: valueField,
       });
+      clearFields();
     }
+  };
+
+  const clearFields = () => {
+    setDateField("");
+    setCategoryField("");
+    setTitleField("");
+    setValueField(0);
   };
 
   return (
