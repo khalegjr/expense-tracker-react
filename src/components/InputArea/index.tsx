@@ -10,6 +10,8 @@ type Props = {
 export const InputArea = ({ onAdd }: Props) => {
   const [dateField, setDateField] = useState("");
   const [categoryField, setCategoryField] = useState("");
+  const [titleField, setTitleField] = useState("");
+  const [valueField, setValueField] = useState(0);
 
   let categoryKeys: string[] = Object.keys(categories);
 
@@ -41,7 +43,7 @@ export const InputArea = ({ onAdd }: Props) => {
 
         <Select
           value={categoryField}
-          onChange={(e) => setDateField(e.target.value)}
+          onChange={(e) => setCategoryField(e.target.value)}
         >
           <>
             <option></option>
@@ -52,6 +54,26 @@ export const InputArea = ({ onAdd }: Props) => {
             ))}
           </>
         </Select>
+      </InputLabel>
+
+      <InputLabel>
+        <InputTitle>Título</InputTitle>
+
+        <Input
+          type="text"
+          value={titleField}
+          onChange={(e) => setTitleField(e.target.value)}
+        />
+      </InputLabel>
+
+      <InputLabel>
+        <InputTitle>Valor</InputTitle>
+
+        <Input
+          type="number"
+          value={valueField}
+          onChange={(e) => setValueField(parseFloat(e.target.value))}
+        />
       </InputLabel>
       <button onClick={handleAddEvent}>Adicionar</button>
     </Container>
