@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Body, Container, Header, HeaderText } from "./App.styles";
+import { InfoArea } from "./components/InfoArea";
 import { TableArea } from "./components/TableArea";
 import { items } from "./data/items";
 import { filterListByMonth, getCurrentMonth } from "./helpers/dateFilters";
@@ -14,6 +15,10 @@ const App = () => {
     setFilteredList(filterListByMonth(list, currentMonth));
   }, [list, currentMonth]);
 
+  const handleMonthChange = (newMonth: string) => {
+    setCurrentMonth(newMonth);
+  };
+
   return (
     <Container>
       <Header>
@@ -21,7 +26,10 @@ const App = () => {
       </Header>
 
       <Body>
-        {/* Área de informações */}
+        <InfoArea
+          currentMonth={currentMonth}
+          onMonthChange={handleMonthChange}
+        />
 
         {/* Área de inserção */}
 
