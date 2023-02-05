@@ -55,5 +55,5 @@ export const formatCurrentMonth = (currentMonth: string): string => {
 export const newDateAdjusted = (dateField: string) => {
   let [year, month, day] = dateField.split("-");
 
-  return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+  return new Date(parseInt(year), parseInt(month), parseInt(day));
 };
